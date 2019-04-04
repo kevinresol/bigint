@@ -1,3 +1,5 @@
 package bigint;
 
-class Impl {}
+class Impl {
+	// TODO: Pure Haxe implementation here
+}
