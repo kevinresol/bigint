@@ -24,8 +24,8 @@ abstract Expect<T>(Dynamic) {
 		return macro @:pos(pos) asserts.assert(
 			e.negate == true ? ev != v : ev == v, 
 			'negate: ' + e.negate + 
-			', value: ' + ev + 
-			', expected: ' + v + 
+			', value: ' + Base.Expect.stringify(ev) + 
+			', expected: ' + Base.Expect.stringify(v)+ 
 			', value(type): ' + Type.typeof(ev) + 
 			', expected(type): ' + Type.typeof(v) + 
 			', ==: ' + (ev == v) + 

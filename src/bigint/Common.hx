@@ -4,6 +4,14 @@ using StringTools;
 
 class Common {
 	
+	public static function trimLeadingZeroes(v:String) {
+		var i = 0;
+		var negative = v.charCodeAt(0) == '-'.code;
+		if(negative) i++;
+		while(v.charCodeAt(i++) == '0'.code) {}
+		return i <= v.length ? (negative ? '-' : '') + v.substr(i-1) : '0';
+	}
+	
 	public static function expandScientificNotation(v:String) {
 		return switch v.toLowerCase().split('e') {
 			case [d]: d;
@@ -78,6 +86,24 @@ class Common {
 		if(g.neq(BigInt.ONE)) throw 'Inverse doesn\'t exist';
 		var m = v.modPow(o.subtract(BigInt.TWO), o);
 		return v.isNegative() ? m.subtract(o) : m;
+	}
+	
+	public static function bitLength(n:BigInt):Int {
+		if(n.isZero()) return 0;
+		if(n.isNegative()) n = n.negate();
+		var bits = -32;
+		var m = null;
+		while(n.isPositive()) {
+			m = n;
+			n = n.shiftRight(32);
+			bits += 32;
+		}
+		var m = m.toInt();
+		while(m > 0) {
+			m = m >> 1;
+			bits += 1;
+		}
+		return bits;
 	}
 	
 	public static function millerRabinTest(n:BigInt, a:Array<BigInt>) {

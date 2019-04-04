@@ -5,8 +5,8 @@ import bigint.*;
 class Base {
 	public function new() {}
 	
-	inline function describe(desc:String, f:Void->Void) {trace(desc); f();}
-	inline function it(desc:String, f:Void->Void) {trace(desc); f();}
+	inline function describe(desc:String, f:Void->Void) f();
+	inline function it(desc:String, f:Void->Void) f();
 	
 	inline function expect<T>(v:T) return new Expect(v);
 	macro function bigInt(ethis, v);
@@ -30,6 +30,15 @@ abstract Expect<T>(Exp<T>) {
 		} catch(e:Dynamic) {
 			true;
 		}
+	
+	public static function stringify(v:Any):String {
+		var s = Std.string(v);
+		#if php
+		if(s == '[object GMP]') return (v:BigInt).toString();
+		#end
+		return s;
+		
+	}
 }
 
 @:forward(add, toString, isPositive, isNegative, isZero, isUnit, isOdd, isEven, isDivisibleBy, isPrime, isProbablePrime, not, bitLength)

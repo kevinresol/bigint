@@ -39,6 +39,7 @@ script:
   - lix run travix node -lib embed-js
   - lix run travix node
   - lix run travix python
+  - lix run travix php
 
 # jobs:
 #   include:
