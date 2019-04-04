@@ -1,0 +1,30 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558 
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "travix",
+			"type": "shell",
+			"command": "lix",
+			"args": [
+				"run", "travix", "run", "java", 
+				// "-D", "net-ver=45",
+				// "-net-lib", "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.runtime.numerics/4.3.0/ref/netcore50/System.Runtime.Numerics.dll",
+				// "-net-lib", "/usr/local/share/dotnet/sdk/2.1.302/Microsoft/Microsoft.NET.Build.Extensions/net461/lib/System.Runtime.dll",
+				// "-net-lib", "/usr/local/share/dotnet/sdk/2.1.302/Microsoft/Microsoft.NET.Build.Extensions/net461/lib/netstandard.dll"
+				
+			],
+			"problemMatcher": [
+				"$haxe-absolute",
+				"$haxe",
+				"$haxe-error",
+				"$haxe-trace"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}

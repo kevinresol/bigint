@@ -1,0 +1,9 @@
+tests.hxml
+-lib travix
+-lib bigint
+# -cs bin/cs
+-java bin/java
+# -D net-ver=45
+# -net-lib /usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.runtime.numerics/4.3.0/ref/netcore50/System.Runtime.Numerics.dll
+# -net-lib /usr/local/share/dotnet/sdk/2.1.302/Microsoft/Microsoft.NET.Build.Extensions/net461/lib/System.Runtime.dll
+# -net-lib /usr/local/share/dotnet/sdk/2.1.302/Microsoft/Microsoft.NET.Build.Extensions/net461/lib/netstandard.dll
