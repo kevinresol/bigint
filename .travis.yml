@@ -32,6 +32,7 @@ script:
   
   - lix run travix java
   
+  - lix run travix js -lib embed-js
   - lix run travix node -lib embed-js
   - lix run travix node
   
