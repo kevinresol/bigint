@@ -1190,15 +1190,21 @@ class Test extends Base {
 		// 		}
 		// 	});
 		// });
-
-		// describe("isInstance", function () {
-		// 	it("works", function () {
-		// 		expect(bigInt.isInstance(bigInt(14))).toBe(true);
-		// 		expect(bigInt.isInstance(14)).toBe(false);
-		// 		expect(bigInt.isInstance(bigInt("2343345345345236243564564363546"))).toBe(true);
-		// 		expect(bigInt.isInstance("3456356345634564356435643634564334")).toBe(false);
-		// 	});
-		// });
+		return asserts.done();
+	}
+		
+	public function instance() {
+			
+		describe("is", function () {
+			it("works", function () {
+				expect(BigInt.is(bigInt(14))).toBe(true);
+				#if !python // BigInt is same as Int for python
+				expect(BigInt.is(14)).toBe(false);
+				#end
+				expect(BigInt.is(bigInt("2343345345345236243564564363546"))).toBe(true);
+				expect(BigInt.is("3456356345634564356435643634564334")).toBe(false);
+			});
+		});
 
 		// describe("fromArray", function () {
 		// 	it("works", function () {
@@ -1206,45 +1212,6 @@ class Test extends Base {
 		// 		expect(bigInt.fromArray([1, 2, 3, 4, 5], 10)).toEqualBigInt("12345");
 		// 		expect(bigInt.fromArray([1, 2, 3, 4, 5], 10, true)).toEqualBigInt("-12345");
 		// 		expect(bigInt.fromArray([1, 2, 3, 4, 5], 256)).toEqualBigInt("4328719365");
-		// 	});
-		// });
-
-		// describe("Aliases", function () {
-		// 	it("add, plus are the same", function () {
-		// 		expect(BigInt.ONE.add == BigInt.ONE.plus).toBe(true);
-		// 	});
-		// 	it("compare, compareTo are the same", function () {
-		// 		expect(BigInt.ONE.compare == BigInt.ONE.compareTo).toBe(true);
-		// 	});
-		// 	it("divide, over are the same", function () {
-		// 		expect(BigInt.ONE.divide == BigInt.ONE.over).toBe(true);
-		// 	});
-		// 	it("equals, eq are the same", function () {
-		// 		expect(BigInt.ONE.equals == BigInt.ONE.eq).toBe(true);
-		// 	});
-		// 	it("greater, gt are the same", function () {
-		// 		expect(BigInt.ONE.greater == BigInt.ONE.gt).toBe(true);
-		// 	});
-		// 	it("greaterOrEquals, geq are the same", function () {
-		// 		expect(BigInt.ONE.greaterOrEquals == BigInt.ONE.geq).toBe(true);
-		// 	});
-		// 	it("lesser, lt are the same", function () {
-		// 		expect(BigInt.ONE.lesser == BigInt.ONE.lt).toBe(true);
-		// 	});
-		// 	it("lesserOrEquals, leq are the same", function () {
-		// 		expect(BigInt.ONE.lesserOrEquals == BigInt.ONE.leq).toBe(true);
-		// 	});
-		// 	it("notEquals, neq are the same", function () {
-		// 		expect(BigInt.ONE.notEquals == BigInt.ONE.neq).toBe(true);
-		// 	});
-		// 	it("subtract, minus are the same", function () {
-		// 		expect(BigInt.ONE.subtract == BigInt.ONE.minus).toBe(true);
-		// 	});
-		// 	it("mod, remainder are the same", function () {
-		// 		expect(BigInt.ONE.mod == BigInt.ONE.remainder).toBe(true);
-		// 	});
-		// 	it("multiply, times are the same", function () {
-		// 		expect(BigInt.ONE.multiply == BigInt.ONE.times).toBe(true);
 		// 	});
 		// });
 

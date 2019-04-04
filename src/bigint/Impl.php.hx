@@ -22,11 +22,11 @@ abstract Impl(Gmp) from Gmp to Gmp {
 	public inline function isNegative():Bool return lt(ZERO);
 	public inline function isEven():Bool return mod(TWO).eq(ZERO);
 	public inline function isOdd():Bool return !isEven();
-	public inline function isZero():Bool return eq(ZERO) || eq(MINUS_ONE);
+	public inline function isZero():Bool return eq(ZERO);
 	public inline function isOne():Bool return eq(ONE);
 	public inline function isUnit():Bool return isOne() || eq(MINUS_ONE);
 	public inline function isPrime():Bool return Common.isPrime(this);
-	public inline function isProbablePrime(iterations:Int):Bool return Common.isProbablePrime(this, iterations);
+	public inline function isProbablePrime(iterations:Int):Bool return Gmp.gmp_prob_prime(this, iterations) != 0;
 	public inline function isDivisibleBy(o:Impl):Bool return Common.isDivisibleBy(this, o);
 	
 	public inline function not():Impl return negate().prev();
@@ -35,8 +35,8 @@ abstract Impl(Gmp) from Gmp to Gmp {
 	inline function rshift(o:Int):Impl return Gmp.gmp_div(this, Gmp.gmp_pow(TWO, o));
 	inline function lshift(o:Int):Impl return Gmp.gmp_mul(this, Gmp.gmp_pow(TWO, o));
 	inline function pshift(v:Impl, o:Impl):Impl return v.isNegative() && v.isOdd() ? o.prev() : o;
-	public inline function shiftRight(o:Impl):Impl return pshift(this, o.isNegative() ? lshift(-o.toInt()) : rshift(o.toInt()));
-	public inline function shiftLeft(o:Impl):Impl return pshift(this, o.isNegative() ? rshift(-o.toInt()) : lshift(o.toInt()));
+	public function shiftRight(o:Impl):Impl return pshift(this, o.isNegative() ? lshift(-o.toInt()) : rshift(o.toInt()));
+	public function shiftLeft(o:Impl):Impl return pshift(this, o.isNegative() ? rshift(-o.toInt()) : lshift(o.toInt()));
 	public inline function and(o:Impl):Impl return Gmp.gmp_and(this, o);
 	public inline function or(o:Impl):Impl return Gmp.gmp_or(this, o);
 	public inline function xor(o:Impl):Impl return Gmp.gmp_xor(this, o);
@@ -84,6 +84,8 @@ abstract Impl(Gmp) from Gmp to Gmp {
 		return isNegative() ? m.subtract(o) : m;
 	}
 	public inline function square():Impl return pow(TWO);
+	
+	public static inline function is(v:Any):Bool return Reflect.isObject(v) && php.Syntax.code('{0} instanceof GMP', v);
 	public inline function toString():String return Gmp.gmp_strval(this);
 }
 
@@ -124,7 +126,7 @@ extern class Gmp {
 	static function gmp_popcount():Gmp;
 	static function gmp_pow(a:Gmp, b:Int):Gmp;
 	static function gmp_powm(a:Gmp, b:Gmp, c:Gmp):Gmp;
-	static function gmp_prob_prime():Gmp;
+	static function gmp_prob_prime(a:Gmp, iterations:Int):Int;
 	static function gmp_random_bits():Gmp;
 	static function gmp_random_range():Gmp;
 	static function gmp_random_seed():Gmp;

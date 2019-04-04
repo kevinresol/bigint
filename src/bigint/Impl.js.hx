@@ -68,6 +68,9 @@ abstract Impl(Native) from Native to Native {
 	public inline function modPow(o:Impl, m:Impl):Impl return this.modPow(o, m); 
 	public inline function modInv(o:Impl):Impl return this.modInv(o); 
 	public inline function square():Impl return this.square();
+	
+	public static inline function rand(a:Impl, b:Impl):Impl return Native.randBetween(a, b);
+	public static inline function is(v:Any):Bool return Native.isInstance(v);
 	public inline function toString():String return this.toString();
 	
 	
@@ -92,7 +95,7 @@ private extern class Native {
 	
 	static function fromArray(digits:Array<Int>, base:Int, ?isNegative:Bool):Native;
 	static function gcd(a:Any, b:Any):Native;
-	static function isInstance(x:Any):Native;
+	static function isInstance(x:Any):Bool;
 	static function lcm(a:Any, b:Any):Native;
 	static function max(a:Any, b:Any):Native;
 	static function min(a:Any, b:Any):Native;

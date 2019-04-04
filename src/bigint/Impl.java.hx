@@ -24,14 +24,14 @@ abstract Impl(Native) from Native to Native {
 	public inline function isNegative():Bool return lt(ZERO);
 	public inline function isEven():Bool return mod(TWO).eq(ZERO);
 	public inline function isOdd():Bool return !isEven();
-	public inline function isZero():Bool return eq(ZERO) || eq(MINUS_ONE);
+	public inline function isZero():Bool return eq(ZERO);
 	public inline function isOne():Bool return eq(ONE);
 	public inline function isUnit():Bool return isOne() || eq(MINUS_ONE);
 	public inline function isPrime():Bool return Common.isPrime(this);
 	public inline function isProbablePrime(iterations:Int):Bool return this.isProbablePrime(iterations);
 	public inline function isDivisibleBy(o:Impl):Bool return Common.isDivisibleBy(this, o);
 	
-	public inline function not():Impl return negate().prev();
+	public inline function not():Impl return this.not();
 	public inline function negate():Impl return this.negate();
 	
 	public inline function shiftRight(o:Impl):Impl return this.shiftRight(o.toInt());
@@ -63,7 +63,7 @@ abstract Impl(Native) from Native to Native {
 	
 	public static inline function max(a:Impl, b:Impl):Impl return (a:Native).max((b:Native));
 	public static inline function min(a:Impl, b:Impl):Impl return (a:Native).min((b:Native));
-	public static inline function gcd(a:Impl, b:Impl):Impl return(a:Native).gcd((b:Native));
+	public static inline function gcd(a:Impl, b:Impl):Impl return (a:Native).gcd((b:Native));
 	public static inline function lcm(a:Impl, b:Impl):Impl return Common.lcm(a, b);
 	
 	public inline function bitLength():Int return this.bitLength();
@@ -83,5 +83,8 @@ abstract Impl(Native) from Native to Native {
 		return isNegative() ? m.subtract(o) : m;
 	}
 	public inline function square():Impl return pow(TWO);
+	
+	// public static inline function rand(a:Impl, b:Impl):Impl return Native.randBetween(a, b);
+	public static inline function is(v:Any):Bool return Std.is(v, Native);
 	public inline function toString():String return this.toString();
 }

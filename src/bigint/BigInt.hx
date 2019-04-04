@@ -80,4 +80,7 @@ abstract BigInt(Impl) from Impl to Impl {
 	@:op(A*B) public inline function multiplyInt(o:Int):BigInt return multiply(o);
 	@:op(A/B) public inline function divideInt(o:Int):BigInt return divide(o);
 	@:op(A%B) public inline function modInt(o:Int):BigInt return mod(o);
+	
+	public static inline function is(v:Any):Bool return Impl.is(v);
+	public inline function toString():String return this.toString();
 }

@@ -83,5 +83,7 @@ abstract Impl(Int) from Int to Int {
 	public inline function modPow(o:Impl, m:Impl):Impl return python.Syntax.code('pow({0}, {1}, {2})', this, o, m);
 	public inline function modInv(o:Impl):Impl return Common.modInv(this, o);
 	public inline function square():Impl return python.Syntax.code('pow({0}, 2)', this);
+	
+	public static inline function is(v:Any):Bool return Std.is(v, Int);
 	public inline function toString():String return Global.str(this);
 }
