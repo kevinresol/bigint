@@ -22,11 +22,11 @@ env:
   
 before_install:
   # install python 3.5
-  - add-apt-repository ppa:fkrull/deadsnakes
-  - apt-get update
-  - apt-get install python3.5
-  - apt-get install python3.5-dev
-  - apt-get install libncurses5-dev
+  - sudo add-apt-repository ppa:fkrull/deadsnakes
+  - sudo apt-get update
+  - sudo apt-get install python3.5
+  - sudo apt-get install python3.5-dev
+  - sudo apt-get install libncurses5-dev
   - ln -s /usr/bin/python3.5 /usr/bin/python3
     
 install:
