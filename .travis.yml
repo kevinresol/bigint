@@ -36,6 +36,7 @@ install:
   
 script:
   - lix run travix java
+  - lix run travix node -lib embed-js
   - lix run travix node
   - lix run travix python
 

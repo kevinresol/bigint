@@ -1,0 +1,4 @@
+-D embed-js=0.1.0
+# @install: lix --silent download "gh://github.com/back2dos/embed-js#46916ef2abe44799e9cb74a3ffdad1e95018281d" into embed-js/0.1.0/github/46916ef2abe44799e9cb74a3ffdad1e95018281d
+-lib tink_url
+-cp ${HAXE_LIBCACHE}/embed-js/0.1.0/github/46916ef2abe44799e9cb74a3ffdad1e95018281d/src

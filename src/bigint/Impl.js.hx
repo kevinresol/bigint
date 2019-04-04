@@ -69,12 +69,24 @@ abstract Impl(Native) from Native to Native {
 	public inline function modInv(o:Impl):Impl return this.modInv(o); 
 	public inline function square():Impl return this.square();
 	public inline function toString():String return this.toString();
+	
+	
 }
 
+#if embed_js
+@:native('bigInt')
+#else
 @:jsRequire('big-integer')
+#end
 private extern class Native {
 	@:selfCall
 	function new(v:Any);
+	
+	#if embed_js
+	private static function __init__():Void {
+		embed.Js.from('http://cdnjs.cloudflare.com/ajax/libs/big-integer/1.6.43/BigInteger.min.js');
+	}
+	#end
 	
 	public static inline function const(i:Int):Native return js.Syntax.code('{0}[{1}]', Native, i);
 	
