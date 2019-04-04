@@ -29,7 +29,8 @@ script:
   - lix run travix install php7
   - phpenv version-name
   - pecl install
-  - php --version
+  - php7.1 --version
+  - php7.1 -i | grep ini
   - echo "extension = gmp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini # enable GMP extension for PHP
   - lix run travix run php7
   
