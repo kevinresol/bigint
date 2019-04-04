@@ -2,4 +2,11 @@ Work in progress
 
 # Big Integer
 
-Supports java only for now.
+### Supported targets
+
+- Java via `java.math.BigInteger` in Java's standard library
+- JavaScript via the `big-integer` npm package
+
+
+### TODO
+- [ ] Pure Haxe implementation
