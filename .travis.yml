@@ -26,9 +26,9 @@ install:
   - lix download
   
 script:
-  - lix run travix install php
+  - lix run travix install php7
   - echo "extension = gmp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini # enable GMP extension for PHP
-  - lix run travix run php
+  - lix run travix run php7
   
   - lix run travix java
   
