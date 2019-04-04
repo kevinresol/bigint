@@ -1,6 +1,7 @@
 Work in progress
 
 # Big Integer
+[![Build Status](https://travis-ci.com/kevinresol/bigint.svg?branch=master)](https://travis-ci.com/kevinresol/bigint)
 
 ### Supported targets
 
