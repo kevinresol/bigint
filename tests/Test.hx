@@ -866,12 +866,12 @@ class Test extends Base {
 					expect(bigInt(primes[i]).isProbablePrime()).toBe(true);
 				}
 			});
-			// it("returns false for any Carmichael number", function () {
-			// 	var carmichaelNumbers = [561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, 399001, 410041, 449065, 488881, 512461];
-			// 	for (i in 0...carmichaelNumbers.length) {
-			// 		expect(bigInt(carmichaelNumbers[i]).isProbablePrime()).toBe(false);
-			// 	}
-			// });
+			it("returns false for any Carmichael number", function () {
+				var carmichaelNumbers = [561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, 399001, 410041, 449065, 488881, 512461];
+				for (i in 0...carmichaelNumbers.length) {
+					expect(bigInt(carmichaelNumbers[i]).isProbablePrime()).toBe(false);
+				}
+			});
 			it("has false positive rate less than 0.1%", function () {
 				var totalPrimes = 0, falsePrimes = 0;
 				for (i in 1...10000) {
