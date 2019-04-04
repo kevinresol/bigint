@@ -9,7 +9,7 @@ class Common {
 		var negative = v.charCodeAt(0) == '-'.code;
 		if(negative) i++;
 		while(v.charCodeAt(i++) == '0'.code) {}
-		return i <= v.length ? (negative ? '-' : '') + v.substr(i-1) : '0';
+		return i <= v.length ? (negative ? '-' : '') + v.substr(i - 1) : '0';
 	}
 	
 	public static function expandScientificNotation(v:String) {
@@ -33,7 +33,7 @@ class Common {
 	}
 	
 	public static function isPrime(v:BigInt):Bool {
-		switch isBasicPrime(v) {
+		return switch isBasicPrime(v) {
 			case null:
 				var n = v.abs();
 				var bits = n.bitLength();
@@ -42,19 +42,22 @@ class Common {
 				var logN = Math.log(2) * bits;
 				
 				var strict = true; // TODO: make this configurable
-				var t = Math.ceil((strict == true) ? (2 * Math.pow(logN, 2)) : logN);
+				var t = Math.ceil(strict ? 2 * Math.pow(logN, 2) : logN);
 				var a = [for (i in 0...t) BigInt.fromInt(i + 2)];
-				return millerRabinTest(n, a);
-			case v: return v;
+				millerRabinTest(n, a);
+			case v: v;
 		}
 	}
 	
 	public static function isProbablePrime(v:BigInt, iterations = 5) {
-		var isPrime = isBasicPrime(v);
-		if (isPrime != null) return isPrime;
-		var n = v.abs();
-		var a = [for(i in 0...iterations) randBetween(BigInt.TWO, n.subtract(BigInt.TWO))];
-		return millerRabinTest(n, a);
+		return switch isBasicPrime(v) {
+			case null:
+				var n = v.abs();
+				var a = [for(i in 0...iterations) randBetween(BigInt.TWO, n.subtract(BigInt.TWO))];
+				millerRabinTest(n, a);
+			case v:
+				v;
+		}
 	}
 	
 	public static function isBasicPrime(v:BigInt):Null<Bool> {
