@@ -68,7 +68,7 @@ abstract Impl(Int) from Int to Int {
 	
 	public static inline function max(a:Impl, b:Impl):Impl return a.toInt() > b.toInt() ? a : b;
 	public static inline function min(a:Impl, b:Impl):Impl return a.toInt() < b.toInt() ? a : b;
-	public static inline function gcd(a:Impl, b:Impl):Impl return (cast NativeMath).gcd(a, b);
+	public static inline function gcd(a:Impl, b:Impl):Impl return (cast NativeMath).gcd(a, b); // TODO math.gcd only available since python 3.5
 	public static inline function lcm(a:Impl, b:Impl):Impl return Util.lcm(a, b);
 	
 	public function bitLength():Int return python.Syntax.code('{0}.bit_length()', this);
