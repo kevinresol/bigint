@@ -2,7 +2,7 @@ package bigint;
 
 using StringTools;
 
-class Util {
+class Common {
 	
 	public static function expandScientificNotation(v:String) {
 		return switch v.toLowerCase().split('e') {

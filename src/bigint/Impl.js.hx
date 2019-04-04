@@ -1,6 +1,6 @@
 package bigint;
 
-using bigint.Util;
+using bigint.Common;
 
 abstract Impl(Native) from Native to Native {
 	public static final ZERO:Impl = Native.const(0);

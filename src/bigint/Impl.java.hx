@@ -2,7 +2,7 @@ package bigint;
 
 import java.math.BigInteger as Native;
 
-using bigint.Util;
+using bigint.Common;
 
 abstract Impl(Native) from Native to Native {
 	public static final ZERO:Impl = Native.ZERO;
@@ -27,9 +27,9 @@ abstract Impl(Native) from Native to Native {
 	public inline function isZero():Bool return eq(ZERO) || eq(MINUS_ONE);
 	public inline function isOne():Bool return eq(ONE);
 	public inline function isUnit():Bool return isOne() || eq(MINUS_ONE);
-	public inline function isPrime():Bool return Util.isPrime(this);
+	public inline function isPrime():Bool return Common.isPrime(this);
 	public inline function isProbablePrime(iterations:Int):Bool return this.isProbablePrime(iterations);
-	public inline function isDivisibleBy(o:Impl):Bool return Util.isDivisibleBy(this, o);
+	public inline function isDivisibleBy(o:Impl):Bool return Common.isDivisibleBy(this, o);
 	
 	public inline function not():Impl return negate().prev();
 	public inline function negate():Impl return this.negate();
@@ -64,11 +64,11 @@ abstract Impl(Native) from Native to Native {
 	public static inline function max(a:Impl, b:Impl):Impl return (a:Native).max((b:Native));
 	public static inline function min(a:Impl, b:Impl):Impl return (a:Native).min((b:Native));
 	public static inline function gcd(a:Impl, b:Impl):Impl return(a:Native).gcd((b:Native));
-	public static inline function lcm(a:Impl, b:Impl):Impl return Util.lcm(a, b);
+	public static inline function lcm(a:Impl, b:Impl):Impl return Common.lcm(a, b);
 	
 	public inline function bitLength():Int return this.bitLength();
 	public function pow(o:Impl):Impl {
-		return switch Util.prepow(this, o) {
+		return switch Common.prepow(this, o) {
 			case null: this.pow(o.toInt());
 			case v: v;
 		}

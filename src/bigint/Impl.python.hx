@@ -3,7 +3,7 @@ package bigint;
 import python.lib.Math as NativeMath;
 import python.internal.UBuiltins as Global;
 
-using bigint.Util;
+using bigint.Common;
 
 abstract Impl(Int) from Int to Int {
 	public static final ZERO:Impl = 0;
@@ -29,9 +29,9 @@ abstract Impl(Int) from Int to Int {
 	public inline function isZero():Bool return this == 0;
 	public inline function isOne():Bool return this == 1;
 	public inline function isUnit():Bool return this == 1 || this == -1;
-	public inline function isPrime():Bool return Util.isPrime(this);
-	public inline function isProbablePrime(iterations:Int):Bool return Util.isProbablePrime(this, iterations);
-	public inline function isDivisibleBy(o:Impl):Bool return Util.isDivisibleBy(this, o);
+	public inline function isPrime():Bool return Common.isPrime(this);
+	public inline function isProbablePrime(iterations:Int):Bool return Common.isProbablePrime(this, iterations);
+	public inline function isDivisibleBy(o:Impl):Bool return Common.isDivisibleBy(this, o);
 	
 	public inline function negate():Impl return -this;
 	
@@ -69,11 +69,11 @@ abstract Impl(Int) from Int to Int {
 	public static inline function max(a:Impl, b:Impl):Impl return a.toInt() > b.toInt() ? a : b;
 	public static inline function min(a:Impl, b:Impl):Impl return a.toInt() < b.toInt() ? a : b;
 	public static inline function gcd(a:Impl, b:Impl):Impl return (cast NativeMath).gcd(a, b); // TODO math.gcd only available since python 3.5
-	public static inline function lcm(a:Impl, b:Impl):Impl return Util.lcm(a, b);
+	public static inline function lcm(a:Impl, b:Impl):Impl return Common.lcm(a, b);
 	
 	public function bitLength():Int return python.Syntax.code('{0}.bit_length()', this);
 	public function pow(o:Impl):Impl {
-		return switch Util.prepow(this, o) {
+		return switch Common.prepow(this, o) {
 			case null: return python.Syntax.code('({0} ** {1})', this, o);
 			case v: v;
 		}
@@ -81,7 +81,7 @@ abstract Impl(Int) from Int to Int {
 	public inline function divmod(o:Impl):{quotient:Impl, remainder:Impl} return {quotient: divide(o), remainder: mod(o)}
 	
 	public inline function modPow(o:Impl, m:Impl):Impl return python.Syntax.code('pow({0}, {1}, {2})', this, o, m);
-	public inline function modInv(o:Impl):Impl return Util.modInv(this, o);
+	public inline function modInv(o:Impl):Impl return Common.modInv(this, o);
 	public inline function square():Impl return python.Syntax.code('pow({0}, 2)', this);
 	public inline function toString():String return Global.str(this);
 }
