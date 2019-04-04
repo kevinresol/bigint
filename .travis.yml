@@ -27,6 +27,8 @@ before_install:
   - sudo apt-get install python3.5
   - sudo apt-get install python3.5-dev
   - sudo apt-get install libncurses5-dev
+  # enable GMP extension for PHP
+  - echo "extension = gmp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
     
 install:
   - npm i -g lix
