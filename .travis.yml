@@ -20,26 +20,27 @@ env:
   # - HAXE_VERSION=3.4.7
   - HAXE_VERSION=nightly
   
-before_install:
-  # install python 3.5
-  - sudo add-apt-repository -y ppa:fkrull/deadsnakes
-  - sudo apt-get update
-  - sudo apt-get install python3.5
-  - sudo apt-get install python3.5-dev
-  - sudo apt-get install libncurses5-dev
-  # enable GMP extension for PHP
-  - echo "extension = gmp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-    
 install:
   - npm i -g lix
   - lix install haxe $HAXE_VERSION
   - lix download
   
 script:
-  - lix run travix php
+  - lix run travix install php
+  - echo "extension = gmp.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini # enable GMP extension for PHP
+  - lix run travix run php
+  
   - lix run travix java
+  
   - lix run travix node -lib embed-js
   - lix run travix node
+  
+  # install python 3.5
+  - sudo add-apt-repository -y ppa:fkrull/deadsnakes
+  - sudo apt-get update
+  - sudo apt-get install python3.5
+  - sudo apt-get install python3.5-dev
+  - sudo apt-get install libncurses5-dev
   - sudo mv /usr/bin/python3 /usr/bin/python3.bak && sudo ln -s /usr/bin/python3.5 /usr/bin/python3 # use python 3.5
   - lix run travix python
   - sudo rm /usr/bin/python3 && sudo mv /usr/bin/python3.bak /usr/bin/python3 # revert to factory python
