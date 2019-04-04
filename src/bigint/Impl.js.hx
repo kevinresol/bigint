@@ -63,6 +63,7 @@ abstract Impl(Native) from Native to Native {
 	
 	public inline function bitLength():Int return this.bitLength();
 	public inline function pow(o:Impl):Impl return this.pow(o);
+	public inline function divmod(o:Impl):{quotient:Impl, remainder:Impl} return this.divmod(o);
 	
 	public inline function modPow(o:Impl, m:Impl):Impl return this.modPow(o, m); 
 	public inline function modInv(o:Impl):Impl return this.modInv(o); 
@@ -93,7 +94,7 @@ private extern class Native {
 	function compareAbs(number:Any):Int;
 	function compareTo(number:Any):Int;
 	function divide(number:Any):Native;
-	function divmod(number:Any):Native;
+	function divmod(number:Any):{quotient:Native, remainder:Native};
 	function eq(number:Any):Bool;
 	function equals(number:Any):Bool;
 	function geq(number:Any):Bool;

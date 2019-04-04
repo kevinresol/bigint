@@ -76,6 +76,7 @@ abstract Impl(Native) from Native to Native {
 		// TODO: not complete
 		// https://github.com/peterolson/BigInteger.js/blob/2e0619371f90aedb8e44cb3ab983b18a5ac699aa/BigInteger.js#L637
 	}
+	public inline function divmod(o:Impl):{quotient:Impl, remainder:Impl} return {quotient: divide(o), remainder: mod(o)}
 	public inline function modPow(o:Impl, m:Impl):Impl return this.modPow((o:Native), (m:Native)); 
 	public function modInv(o:Impl):Impl {
 		var m:Impl = this.modInverse((o:Native));

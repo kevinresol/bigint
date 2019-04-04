@@ -42,6 +42,7 @@ abstract BigInt(Impl) from Impl to Impl {
 	
 	public inline function bitLength():Int return this.bitLength();
 	public inline function pow(o:BigInt):BigInt return this.pow(o);
+	public inline function divmod(o:BigInt):{quotient:BigInt, remainder:BigInt} return this.divmod(o);
 	
 	public inline function modPow(o:BigInt, m:BigInt):BigInt return this.modPow(o, m);
 	public inline function modInv(o:BigInt):BigInt return this.modInv(o);
