@@ -28,7 +28,7 @@ abstract Impl(Native) from Native to Native {
 	public inline function isOne():Bool return eq(ONE);
 	public inline function isUnit():Bool return isOne() || eq(MINUS_ONE);
 	public inline function isPrime():Bool return Util.isPrime(this);
-	public inline function isProbablePrime(iterations:Int = 5):Bool return this.isProbablePrime(iterations);
+	public inline function isProbablePrime(iterations:Int):Bool return this.isProbablePrime(iterations);
 	public inline function isDivisibleBy(o:Impl):Bool return Util.isDivisibleBy(this, o);
 	
 	public inline function not():Impl return negate().prev();
