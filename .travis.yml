@@ -27,6 +27,7 @@ install:
   
 script:
   - lix run travix install php7
+  - apt-get install -y php7.1-gmp # install GMP extension for PHP
   - echo "extension = php_gmp.so" | sudo tee -a /etc/php/7.1/cli/php.ini # enable GMP extension for PHP
   - lix run travix run php7
   
