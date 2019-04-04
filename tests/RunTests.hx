@@ -19,9 +19,18 @@ class RunTests {
 
 // skip reporting success cases
 class FilterReporter extends tink.testrunner.Reporter.BasicReporter {
+  var count = 0;
   override function report(v:tink.testrunner.Reporter.ReportType) {
     return switch v {
-      case Assertion(assertion) if(tink.core.Outcome.OutcomeTools.isSuccess(assertion.holds)): tink.core.Future.NOISE;
+      case CaseStart(_):  
+        count = 0;
+        super.report(v);
+      case Assertion(assertion) if(tink.core.Outcome.OutcomeTools.isSuccess(assertion.holds)):
+        count++;
+        tink.core.Future.NOISE;
+      case CaseFinish(_):
+        println(formatter.success(indent('+ $count assertion(s) passed', 4)));
+        super.report(v);
       case _: super.report(v);
     }
   }
