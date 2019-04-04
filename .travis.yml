@@ -27,7 +27,6 @@ before_install:
   - sudo apt-get install python3.5
   - sudo apt-get install python3.5-dev
   - sudo apt-get install libncurses5-dev
-  - sudo ln -sf /usr/bin/python3.5 /usr/bin/python3
     
 install:
   - npm i -g lix
@@ -35,11 +34,14 @@ install:
   - lix download
   
 script:
+  - lix run travix php
   - lix run travix java
   - lix run travix node -lib embed-js
   - lix run travix node
+  - sudo mv /usr/bin/python3 /usr/bin/python3.bak && sudo ln -s /usr/bin/python3.5 /usr/bin/python3 # use python 3.5
   - lix run travix python
-  - lix run travix php
+  - sudo rm /usr/bin/python3 && sudo mv /usr/bin/python3.bak /usr/bin/python3 # revert to factory python
+  
 
 # jobs:
 #   include:
