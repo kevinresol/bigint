@@ -90,7 +90,7 @@ abstract Impl(Gmp) from Gmp to Gmp {
 }
 
 @:phpGlobal
-extern class Gmp {
+private extern class Gmp {
 	static function gmp_abs(a:Gmp):Gmp;
 	static function gmp_add(a:Gmp, b:Gmp):Gmp;
 	static function gmp_and(a:Gmp, b:Gmp):Gmp;
