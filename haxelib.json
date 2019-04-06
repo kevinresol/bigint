@@ -2,7 +2,7 @@
   "name": "bigint",
   "license": "MIT",
   "tags": [
-    "big integer"
+    "big", "integer"
   ],
   "classPath": "src",
   "contributors": [
