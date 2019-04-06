@@ -140,9 +140,13 @@ class Common {
 	}
 	
 	public static function randBetween(a:BigInt, b:BigInt) {
+		
+		// HACK: a quick rand
 		var range:Int = b - a;
 		if(range > 1 << 30) range = 1 << 30;
 		return a.add(Std.random(range));
+		
+		// TODO: re-enable the following code which is more "correct"
 		
 		// var low = BigInt.min(a, b), high = BigInt.max(a, b);
 		// var range = high.subtract(low).add(BigInt.ONE);
