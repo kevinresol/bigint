@@ -1,14 +1,15 @@
 {
-  "name": "bigint",
-  "license": "MIT",
-  "tags": [
-    "big", "integer"
-  ],
-  "classPath": "src",
-  "contributors": [
-    "kevinresol"
-  ],
-  "releasenote": "initial release",
-  "version": "0.0.0",
-  "dependencies": {}
+	"name": "bigint",
+	"classPath": "src",
+	"dependencies": {},
+	"contributors": [
+		"kevinresol"
+	],
+	"version": "0.1.0",
+	"releasenote": "Initial release (Supports java,js,php,python)",
+	"tags": [
+		"big",
+		"integer"
+	],
+	"license": "MIT"
 }
