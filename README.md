@@ -3,6 +3,10 @@ Work in progress
 # Big Integer
 [![Build Status](https://travis-ci.com/kevinresol/bigint.svg?branch=master)](https://travis-ci.com/kevinresol/bigint)
 
+### Blog Post
+
+- http://www.kevinresol.com/2019-04-05/approaches-utilize-haxe-targets/
+
 ### Supported targets
 
 - Java via `java.math.BigInteger` in Java's standard library.
